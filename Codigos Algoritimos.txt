@@ -1,0 +1,558 @@
+Etapa 1
+// Exemplo de Estrutura Sequencial
+
+#include <stdio.h>
+
+
+
+int main() {
+
+  char nome[50];
+
+  int codigo;
+
+  int quantidade;
+
+
+
+  printf("Cadastro de Produto\n");
+
+  printf("Nome do produto: ");
+
+  scanf("%49s", nome);
+
+
+
+  printf("Codigo do produto: ");
+
+  scanf("%d", &codigo);
+
+
+
+  printf("Quantidade em estoque: ");
+
+  scanf("%d", &quantidade);
+
+
+
+  printf("\n--- Dados do Produto ---\n");
+
+  printf("Nome: %s\n", nome);
+
+  printf("Codigo: %d\n", codigo);
+
+  printf("Quantidade: %d\n", quantidade);
+
+
+
+  return 0;
+
+}
+
+Etapa 2 
+// Exemplo de Estrutura de Decisçao
+
+
+
+#include <stdio.h>
+
+
+
+int main() {
+
+  int quantidade, minimo;
+
+
+
+  printf("Quantidade em estoque: ");
+
+  scanf("%d", &quantidade);
+
+
+
+  printf("Estoque minimo permitido: ");
+
+  scanf("%d", &minimo);
+
+
+
+  if (quantidade < minimo) {
+
+    printf("ALERTA: Estoque baixo! Necessario repor.\n");
+
+  } else {
+
+    printf("Estoque suficiente.\n");
+
+  }
+
+
+
+  int opcao;
+
+  printf("\nDigite o tipo de produto (1-Comum, 2-Fragil): ");
+
+  scanf("%d", &opcao);
+
+
+
+  switch(opcao) {
+
+    case 1: printf("Produto comum.\n"); break;
+
+    case 2: printf("Produto fragil.\n"); break;
+
+    default: printf("Opcao invalida.\n");
+
+  }
+
+
+
+  return 0;
+
+}
+
+Etapa 3 
+
+// Exemplo de Estrutura de Repetiçao
+
+#include <stdio.h>
+
+
+
+int main() {
+
+  int opcao;
+
+  int estoque = 0;
+
+  int valor;
+
+
+
+  do {
+
+    printf("\n--- MENU ESTOQUE ---\n");
+
+    printf("1 - Entrada de estoque\n");
+
+    printf("2 - Saida de estoque\n");
+
+    printf("3 - Consultar estoque\n");
+
+    printf("0 - Sair\n");
+
+    printf("Escolha: ");
+
+    scanf("%d", &opcao);
+
+
+
+    switch(opcao) {
+
+      case 1:
+
+        printf("Quantidade a adicionar: ");
+
+        scanf("%d", &valor);
+
+        estoque += valor;
+
+        break;
+
+
+
+      case 2:
+
+        printf("Quantidade a remover: ");
+
+        scanf("%d", &valor);
+
+        estoque -= valor;
+
+        if (estoque < 0) estoque = 0;
+
+        break;
+
+
+
+      case 3:
+
+        printf("Estoque atual: %d\n", estoque);
+
+        break;
+
+    }
+
+
+
+  } while(opcao != 0);
+
+
+
+  return 0;
+
+}
+
+Etapa 4
+
+// Exemplo de Estruturas de Dados Composta Homogênea
+
+#include <stdio.h>
+
+
+
+#define MAX 5
+
+
+
+struct Produto {
+
+  char nome[50];
+
+  int codigo;
+
+  int quantidade;
+
+};
+
+
+
+int main() {
+
+  struct Produto lista[MAX];
+
+  int i;
+
+
+
+  for (i = 0; i < MAX; i++) {
+
+    printf("\nCadastro do produto %d\n", i + 1);
+
+    printf("Nome: ");
+
+    scanf("%49s", lista[i].nome);
+
+    printf("Codigo: ");
+
+    scanf("%d", &lista[i].codigo);
+
+    printf("Quantidade: ");
+
+    scanf("%d", &lista[i].quantidade);
+
+  }
+
+
+
+  printf("\n--- Lista de Produtos Cadastrados ---\n");
+
+  for (i = 0; i < MAX; i++) {
+
+    printf("\nProduto %d\n", i + 1);
+
+    printf("Nome: %s\n", lista[i].nome);
+
+    printf("Codigo: %d\n", lista[i].codigo);
+
+    printf("Quantidade: %d\n", lista[i].quantidade);
+
+  }
+
+
+
+  return 0;
+
+}
+
+Etapa 5 
+
+// Exemplo de Estruturas de Modularizaçao
+
+#include <stdio.h>
+
+
+
+void entradaEstoque(int *estoque, int valor) {
+
+  *estoque += valor;
+
+}
+
+
+
+void saidaEstoque(int *estoque, int valor) {
+
+  *estoque -= valor;
+
+  if (*estoque < 0) *estoque = 0;
+
+}
+
+
+
+void consultarEstoque(int estoque) {
+
+  printf("Estoque atual: %d\n", estoque);
+
+}
+
+
+
+int main() {
+
+  int estoque = 0, opcao, valor;
+
+
+
+  do {
+
+    printf("\n--- MENU ---\n");
+
+    printf("1 - Entrada\n");
+
+    printf("2 - Saida\n");
+
+    printf("3 - Consultar\n");
+
+    printf("0 - Sair\n");
+
+    printf("Escolha: ");
+
+    scanf("%d", &opcao);
+
+
+
+    switch(opcao) {
+
+      case 1:
+
+        printf("Entrada: ");
+
+        scanf("%d", &valor);
+
+        entradaEstoque(&estoque, valor);
+
+        break;
+
+
+
+      case 2:
+
+        printf("Saida: ");
+
+        scanf("%d", &valor);
+
+        saidaEstoque(&estoque, valor);
+
+        break;
+
+
+
+      case 3:
+
+        consultarEstoque(estoque);
+
+        break;
+
+    }
+
+
+
+  } while(opcao != 0);
+
+
+
+  return 0;
+
+}
+
+Etapa projeto final 6
+
+
+#include <stdio.h>
+
+#include <string.h>
+
+
+
+#define MAX 50
+
+
+
+struct Produto {
+
+  char nome[50];
+
+  int codigo;
+
+  int quantidade;
+
+};
+
+
+
+void cadastrarProduto(struct Produto lista[], int *total) {
+
+  if (*total >= MAX) {
+
+    printf("Limite atingido!\n");
+
+    return;
+
+  }
+
+
+
+  printf("Nome: ");
+
+  scanf("%49s", lista[*total].nome);
+
+  printf("Codigo: ");
+
+  scanf("%d", &lista[*total].codigo);
+
+  printf("Quantidade: ");
+
+  scanf("%d", &lista[*total].quantidade);
+
+
+
+  (*total)++;
+
+}
+
+
+
+void entradaEstoque(struct Produto lista[], int total) {
+
+  int codigo, valor;
+
+  printf("Codigo do produto: ");
+
+  scanf("%d", &codigo);
+
+
+
+  for (int i = 0; i < total; i++) {
+
+    if (lista[i].codigo == codigo) {
+
+      printf("Quantidade a adicionar: ");
+
+      scanf("%d", &valor);
+
+      lista[i].quantidade += valor;
+
+      return;
+
+    }
+
+  }
+
+  printf("Produto nao encontrado.\n");
+
+}
+
+
+
+void saidaEstoque(struct Produto lista[], int total) {
+
+  int codigo, valor;
+
+  printf("Codigo do produto: ");
+
+  scanf("%d", &codigo);
+
+
+
+  for (int i = 0; i < total; i++) {
+
+    if (lista[i].codigo == codigo) {
+
+      printf("Quantidade a remover: ");
+
+      scanf("%d", &valor);
+
+      lista[i].quantidade -= valor;
+
+      if (lista[i].quantidade < 0) lista[i].quantidade = 0;
+
+      return;
+
+    }
+
+  }
+
+  printf("Produto nao encontrado.\n");
+
+}
+
+
+
+void consultar(struct Produto lista[], int total) {
+
+  for (int i = 0; i < total; i++) {
+
+    printf("\nProduto %d\n", i + 1);
+
+    printf("Nome: %s\n", lista[i].nome);
+
+    printf("Codigo: %d\n", lista[i].codigo);
+
+    printf("Quantidade: %d\n", lista[i].quantidade);
+
+  }
+
+}
+
+
+
+int main() {
+
+  struct Produto lista[MAX];
+
+  int total = 0, opcao;
+
+
+
+  do {
+
+    printf("\n--- MENU ---\n");
+
+    printf("1 - Cadastrar produto\n");
+
+    printf("2 - Entrada de estoque\n");
+
+    printf("3 - Saida de estoque\n");
+
+    printf("4 - Consultar produtos\n");
+
+    printf("0 - Sair\n");
+
+    printf("Escolha: ");
+
+    scanf("%d", &opcao);
+
+
+
+    switch(opcao) {
+
+      case 1: cadastrarProduto(lista, &total); break;
+
+      case 2: entradaEstoque(lista, total); break;
+
+      case 3: saidaEstoque(lista, total); break;
+
+      case 4: consultar(lista, total); break;
+
+    }
+
+  } while(opcao != 0);
+
+
+
+  return 0;
+
+}
